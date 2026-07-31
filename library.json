@@ -6,7 +6,7 @@
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/dudanov/MideaUART.git"
+    "url": "https://github.com/seiferma/MideaUART.git"
   },
   "authors":
   [
@@ -14,6 +14,9 @@
       "name": "Sergey Dudanov",
       "email": "sergey.dudanov@gmail.com",
       "url": "https://fb.com/dudanov"
+    },
+    {
+      "name": "Stephan Seifermann"
     }
   ],
   "license": "MIT",
