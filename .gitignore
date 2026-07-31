@@ -1,2 +1,3 @@
 .vscode
 .pio
+.devcontainer/docker_gid

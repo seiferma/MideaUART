@@ -1,0 +1,49 @@
+{
+	"name": "Platform.IO + OpenCode",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"capAdd": [
+		"SYS_PTRACE"
+	],
+	"mounts": [
+		{
+			"source": "/var/run/docker.sock",
+			"target": "/var/run/docker.sock",
+			"type": "bind"
+		},
+		{
+			"source": "${localEnv:HOME}/.config/opencode",
+			"target": "/home/vscode/.config/opencode",
+			"type": "bind"
+		},
+		{
+			"source": "${localEnv:HOME}/.agents",
+			"target": "/home/vscode/.agents",
+			"type": "bind"
+		},
+		{
+			"source": "${localEnv:HOME}/.local/share/opencode",
+			"target": "/home/vscode/.local/share",
+			"type": "bind"
+		}
+	],
+	"initializeCommand": "docker run --rm -it --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock busybox stat -c %g /var/run/docker.sock > ${localWorkspaceFolder}/.devcontainer/docker_gid",
+	"postCreateCommand": "rtk init -g --opencode --hook-only --auto-patch || true",
+	"customizations": {
+		"vscode": {
+			"settings": {
+
+			},
+			"extensions": [
+				"platformio.platformio-ide",				
+				"ms-vscode.cpptools-extension-pack"
+			]
+		}
+	},
+	"forwardPorts": [
+		8080
+	],
+	"remoteUser": "vscode",
+	"containerUser": "vscode"
+}
